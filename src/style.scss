@@ -1,0 +1,156 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #646cff;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
+
+$CONATINER_HEIGHT: 75px;
+$SELECTED_BRUSH_GAP: 10px;
+$SELECTED_BRUSH_BG: #d8d8d8;
+
+.container {
+  width: 365px;
+  height: $CONATINER_HEIGHT;
+  margin-bottom: 25px;
+
+  position: absolute;
+  display: flex;
+  align-items: center;
+
+  border-radius: $CONATINER_HEIGHT;
+  background-color: #ffffff;
+
+  transition: width 0.3s ease-in-out;
+
+  &.closed {
+    width: $CONATINER_HEIGHT;
+    height: $CONATINER_HEIGHT;
+
+    .brush-container {
+      display: none;
+    }
+  }
+
+  .selected-brush {
+    width: calc($CONATINER_HEIGHT - $SELECTED_BRUSH_GAP);
+    height: calc($CONATINER_HEIGHT - $SELECTED_BRUSH_GAP);
+    margin-left: calc($SELECTED_BRUSH_GAP / 2);
+
+    border-radius: calc($CONATINER_HEIGHT - $SELECTED_BRUSH_GAP);
+    background-color: $SELECTED_BRUSH_BG;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .selected-brush-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  .brush-container {
+    height: calc($CONATINER_HEIGHT - $SELECTED_BRUSH_GAP);
+    margin-left: $SELECTED_BRUSH_GAP;
+    margin-right: calc($CONATINER_HEIGHT / 2);
+
+    display: flex;
+    align-items: center;
+
+    animation-name: appear;
+    animation-delay: 5s;
+    animation-duration: 0.3s;
+
+    .brush {
+      width: calc($CONATINER_HEIGHT - $SELECTED_BRUSH_GAP - 20px);
+      height: calc($CONATINER_HEIGHT - $SELECTED_BRUSH_GAP - 20px);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      transform: translateY(0px) scale(1);
+      transition: transform 0.3s ease-in-out;
+
+      & + .brush {
+        margin-left: 5px;
+      }
+
+      &.selected {
+        transform: translateY(-10px) scale(1.2);
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+  }
+}
+
+@keyframes appear {
+  from {
+    display: none;
+  } to {
+    display: auto;
+  }
+}
