@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #ff9933;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -17,7 +17,9 @@
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  // place-items: center;
+  justify-content: center;
+  align-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -153,4 +155,12 @@ $SELECTED_BRUSH_BG: #d8d8d8;
   } to {
     display: auto;
   }
+}
+
+#canvas {
+  width: 500px;
+  height: 500px;
+
+  position: absolute;
+  border: 3px solid red;
 }

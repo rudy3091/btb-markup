@@ -4,6 +4,8 @@ import icon2 from "./icons/done_black_24dp.svg";
 import icon3 from "./icons/home_black_24dp.svg";
 import icon4 from "./icons/search_black_24dp.svg";
 import icon5 from "./icons/settings_black_24dp.svg";
+import mouse from "./mouse";
+import ant from './ant';
 
 const icons = [icon1, icon2, icon3, icon4, icon5];
 let selectedIconIndex = 0;
@@ -35,20 +37,25 @@ container.addEventListener("click", () => {
 });
 
 document.body.addEventListener("click", (ev) => {
-  const target = (ev.target as HTMLElement).closest('.container');
-  if (!target && !container.classList.contains('closed')) {
+  const target = (ev.target as HTMLElement).closest(".container");
+  if (!target && !container.classList.contains("closed")) {
     container.classList.add("closed");
   }
 });
 
-const selectedBrush = document.querySelector<HTMLImageElement>('.selected-brush-icon')!;
+const selectedBrush = document.querySelector<HTMLImageElement>(
+  ".selected-brush-icon"
+)!;
 
 const iconElems = document.querySelectorAll<HTMLElement>(".brush")!;
 iconElems.forEach((iconElem, idx) => {
-  iconElem.addEventListener('click', () => {
-    iconElems[selectedIconIndex].classList.remove('selected');
+  iconElem.addEventListener("click", () => {
+    iconElems[selectedIconIndex].classList.remove("selected");
     selectedIconIndex = idx;
-    iconElems[selectedIconIndex].classList.add('selected');
+    iconElems[selectedIconIndex].classList.add("selected");
     selectedBrush.src = icons[selectedIconIndex];
   });
 });
+
+mouse();
+ant();
