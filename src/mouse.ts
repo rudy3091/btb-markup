@@ -1,9 +1,11 @@
+import image from './splash.svg';
+
 export default () => {
   const canvas = document.querySelector("#canvas") as HTMLCanvasElement;
   const ctx = canvas.getContext("2d");
 
   const img = new Image();
-  img.src = "./src/splash.svg";
+  img.src = image;
   img.width = 10;
   img.height = 10;
   img.onload = () => {

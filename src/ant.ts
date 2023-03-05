@@ -1,3 +1,5 @@
+import image from './splash.svg';
+
 export class Ant {
   private static mw: number = 500;
   private static mh: number = 500;
@@ -26,7 +28,7 @@ export default () => {
   const ctx = canvas.getContext("2d");
 
   const img = new Image();
-  img.src = "./src/splash.svg";
+  img.src = image;
   img.width = 10;
   img.height = 10;
   img.onload = () => {
